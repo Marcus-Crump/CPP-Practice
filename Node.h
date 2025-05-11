@@ -8,6 +8,8 @@ class Node
 private:
 ItemType item; // A data item
 Node<ItemType>* next; // Pointer to next node
+Node<ItemType>* prev; // Pointer to prev node
+
 
 public :
 Node();
@@ -20,9 +22,14 @@ void setItem(const ItemType& anItem);
 
 void setNext(Node<ItemType>* nextNodePtr);
 
+void setPrev(Node<ItemType>* nextNodePtr);
+
 ItemType getItem() const ;
 
 Node<ItemType>* getNext() const ;
+
+Node<ItemType>* getPrev() const ;
+
 }; // end Node
 
 #include "Node.cpp"
