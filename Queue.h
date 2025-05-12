@@ -20,9 +20,9 @@ class Queue
 
     void enqueue(const ItemType& item);
 
-    Node<ItemType> peek();
+    Node<ItemType>* peek();
 
-    Node<ItemType> dequeue();
+    Node<ItemType>* dequeue();
 
     void clear();
 

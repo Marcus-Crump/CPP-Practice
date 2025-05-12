@@ -12,44 +12,40 @@ template<class ItemType>
 void Queue<ItemType>::enqueue(const ItemType& item)
 {
         Node<ItemType>* newNodePointer = new Node<ItemType>(item, head->getNext());
-    if (length == 0)
+    if (tail == nullptr)
     {
-        talil = newNodePointer;
+        tail = newNodePointer;
         head->setNext(newNodePointer);
 
     }else
     {
-        Node<ItemType>* last = head->getNext();
-        
+        Node<ItemType>* n = head->getNext();
+        n->setPrev(newNodePointer);
         head->setNext(newNodePointer);
     }
+    length++;
+
 }
 
 template<class ItemType>
-Node<ItemType> Queue<ItemType>::peek()
+Node<ItemType>* Queue<ItemType>::peek()
 {
     return head->getNext();
 }
 
 template<class ItemType>
-Node<ItemType> Queue<ItemType>::dequeue()
+Node<ItemType>* Queue<ItemType>::dequeue()
 {
+    if(tail == 0)
+    {
+        return nullptr;
+    }
     Node<ItemType>* del = tail;
-    tail = del->getNext();
+    tail = del->getPrev();
+    length--;
     return del;
 }
 
-template<class ItemType>
-void Queue<ItemType>::clear()
-{
-    while (head->getNext() != nullptr)
-    {
-        Node<ItemType> del = head->getNext();
-        head->setNext(del->getNext());
-        delete del;
-        del = nullptr;
-    }
-}
 
 template<class ItemType>
 bool Queue<ItemType>::is_empty()
@@ -61,6 +57,19 @@ template<class ItemType>
 int Queue<ItemType>::size() const
 {
     return length;
+}
+
+template<class ItemType>
+void Queue<ItemType>::clear()
+{
+    tail = nullptr;
+    while (head->getNext() != nullptr)
+    {
+        Node<ItemType>* del = head->getNext();
+        head->setNext(del->getNext());
+        delete del;
+        del = nullptr;
+    }
 }
 
 template<class ItemType>
