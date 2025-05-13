@@ -3,14 +3,14 @@
 #include <cstddef>
 
 template< class ItemType>
-TreeNode<ItemType>::TreeNode() : left(nullptr), right(nullptr)
+TreeNode<ItemType>::TreeNode() : left(nullptr), right(nullptr), parent(nullptr)
 {
 } // end default constructor
 
 
 template< class ItemType>
 TreeNode<ItemType>::TreeNode(const ItemType& anItem) : item(anItem), left(nullptr),
-                    right(nullptr) 
+                    right(nullptr), parent(nullptr)
 {
 } // end constructor
 
@@ -33,6 +33,11 @@ void TreeNode<ItemType>::setRight(TreeNode<ItemType>* treeNodePtr)
 right = treeNodePtr;
 } // end setright
 
+template< class ItemType>
+void TreeNode<ItemType>::setParent(TreeNode<ItemType>* parentNode)
+{
+    parent = parentNode;
+}
 
 template< class ItemType>
 ItemType TreeNode<ItemType>::getItem() const
@@ -52,3 +57,9 @@ TreeNode<ItemType>* TreeNode<ItemType>::getRight() const
 {
 return right;
 } // end getright
+
+template<class ItemType>
+TreeNode<ItemType>* TreeNode<ItemType>::getParent() const
+{
+    return parent;
+}

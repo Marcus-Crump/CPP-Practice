@@ -10,6 +10,8 @@ class BinaryTree
     TreeNode<ItemType>* root;
     int num_nodes;
 
+    TreeNode<ItemType>* get_leaf();
+
     public:
     BinaryTree();
     BinaryTree(ItemType& rootItem);

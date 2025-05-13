@@ -7,6 +7,7 @@ class TreeNode
 {
 private:
 ItemType item; // A data item
+TreeNode<ItemType>* parent;
 TreeNode<ItemType>* left; // Pointer to next Treenode
 TreeNode<ItemType>* right; // Pointer to prev Treenode
 
@@ -22,11 +23,15 @@ void setLeft(TreeNode<ItemType>* nextTreeNodePtr);
 
 void setRight(TreeNode<ItemType>* nextTreeNodePtr);
 
+void setParent(TreeNode<ItemType>* parentNode);
+
 ItemType getItem() const ;
 
 TreeNode<ItemType>* getLeft() const ;
 
 TreeNode<ItemType>* getRight() const ;
+
+TreeNode<ItemType>* getParent() const;
 
 }; // end TreeNode
 
